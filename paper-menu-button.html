@@ -282,7 +282,8 @@ Custom property | Description | Default
          * for the `iron-dropdown` contained by `paper-menu-button`.
          */
         focusTarget: {
-          type: Object
+          type: Object,
+          value: null
         }
       },
 
@@ -348,7 +349,9 @@ Custom property | Description | Default
           // We poke this property in case the element has changed. This will
           // cause the focus target for the `iron-dropdown` to be updated as
           // necessary:
-          this.focusTarget = this.contentElement;
+          if(!this.focusTarget){
+            this.focusTarget = this.contentElement;
+          }
           this.fire('paper-dropdown-open');
         } else if (oldOpened != null) {
           this.fire('paper-dropdown-close');
